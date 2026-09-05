@@ -1,4 +1,7 @@
-# Shipwright — marketing website
+<p align="center">
+  <img src="logo.png" width="96" height="96" alt="Shipwright" />
+</p>
+<h1 align="center">Shipwright — marketing website</h1>
 
 The public landing site for **Shipwright**, an autonomous AI software company. Zero build step —
 plain HTML, CSS, and vanilla JavaScript, with a Three.js 3D hero and two interactive demos (an

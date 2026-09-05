@@ -208,18 +208,19 @@
     const acts = [...document.querySelectorAll("#acts .act")];
     if (!stage || !acts.length) return;
     const scenes = [...stage.querySelectorAll(".scene")];
-    const urls = ["dashboard/new-mission", "dashboard/live-build", "dashboard", "dashboard/tickets", "dashboard"];
+    const URL = { models: "dashboard/models", integrations: "dashboard/integrations", create: "dashboard/new-mission", build: "dashboard/live-build", dashboard: "dashboard", tickets: "dashboard/tickets", ship: "dashboard/live-build" };
     const urlEl = document.getElementById("stageUrl");
     let current = -1, tok = 0;
     const alive = (t) => t === tok;
+    const keyOf = (i) => (scenes[i] ? scenes[i].dataset.scene : "");
 
     const show = (i) => {
       if (i === current) return;
       current = i; tok++;
       acts.forEach((a, k) => a.classList.toggle("active", k === i));
       scenes.forEach((s, k) => s.classList.toggle("on", k === i));
-      if (urlEl) urlEl.textContent = `app.shipwright.dev/${urls[i] || "dashboard"}`;
-      runScene(i, tok);
+      if (urlEl) urlEl.textContent = `app.shipwright.dev/${URL[keyOf(i)] || "dashboard"}`;
+      runScene(keyOf(i), tok);
     };
 
     const io = new IntersectionObserver((entries) => {
@@ -230,11 +231,19 @@
     acts.forEach((a) => io.observe(a));
     show(0);
 
-    function runScene(i, t) {
-      if (i === 0) typeMission(t);
-      else if (i === 1) streamConsole(t);
-      else if (i === 2) countStats(t);
-      else if (i === 3) moveTickets(t);
+    function runScene(key, t) {
+      if (key === "create") typeMission(t);
+      else if (key === "build") streamConsole(t);
+      else if (key === "dashboard") countStats(t);
+      else if (key === "tickets") moveTickets(t);
+      else if (key === "ship") runShip(t);
+    }
+
+    function runShip(t) {
+      const el = document.getElementById("runUrl"); if (!el) return;
+      el.classList.remove("show");
+      if (reduce) { el.classList.add("show"); return; }
+      setTimeout(() => { if (alive(t)) el.classList.add("show"); }, 900);  // "Run app" → live URL
     }
 
     function typeMission(t) {
@@ -270,7 +279,7 @@
     }
 
     function countStats(t) {
-      stage.querySelectorAll('.scene[data-scene="2"] .n').forEach((el) => {
+      stage.querySelectorAll('.scene[data-scene="dashboard"] .n').forEach((el) => {
         const isMoney = el.dataset.money != null;
         const target = Number(el.dataset.count ?? el.dataset.money ?? 0);
         const fmt = (v) => (isMoney ? `~$${v.toLocaleString()}` : String(v));
@@ -284,7 +293,7 @@
         })(t0);
       });
       const heights = [30, 55, 40, 70, 50, 85, 65, 92];
-      stage.querySelectorAll('.scene[data-scene="2"] .spark i').forEach((b, k) => {
+      stage.querySelectorAll('.scene[data-scene="dashboard"] .spark i').forEach((b, k) => {
         const h = heights[k] || 50;
         if (reduce) { b.style.height = `${h}%`; return; }
         b.style.height = "0%";

@@ -46,18 +46,18 @@
   <header class="nav">
     <div class="wrap nav-inner">
       <a class="brand" href="#top" aria-label="Shipwright — home">
-        <span class="logo">◈</span><span class="name">Shipwright</span>
+        <span class="logo"><svg width="20" height="20" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M24 20 L14 32 L24 44" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 20 L50 32 L40 44" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 23 L33.7 30.3 L41 32 L33.7 33.7 L32 41 L30.3 33.7 L23 32 L30.3 30.3 Z" fill="currentColor"/></svg></span><span class="name">Shipwright</span>
       </a>
       <nav class="nav-links closed" id="navLinks">
         <a class="link" href="#demo">How it works</a>
         <a class="link" href="#tour">Tour</a>
         <a class="link" href="#features">Product</a>
         <a class="link" href="#team">Team</a>
-        <a class="btn primary" href="https://github.com/iamzainmunir/Shipwright" target="_blank" rel="noopener">
-          <svg width="16" height="16"><use href="#i-gh"/></svg> GitHub
-        </a>
       </nav>
-      <div class="row" style="gap:8px;align-items:center">
+      <div class="nav-actions">
+        <a class="btn primary gh-cta" href="https://github.com/iamzainmunir/Shipwright" target="_blank" rel="noopener" aria-label="View on GitHub">
+          <svg width="16" height="16"><use href="#i-gh"/></svg> <span class="label">GitHub</span>
+        </a>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
           <svg width="17" height="17"><use href="#i-moon"/></svg>
         </button>
@@ -134,30 +134,40 @@
         </div>
         <div class="story-grid" style="margin-top:18px">
           <div class="story-scenes" id="acts">
-            <div class="act" data-scene="0">
-              <span class="anum"><b>1</b> Create</span>
+            <div class="act" data-scene="models">
+              <span class="anum"><b>1</b> Connect</span>
+              <h3>Bring any model</h3>
+              <p>Anthropic, OpenAI-compatible, local Ollama — or your own Claude Code CLI seat. Bind a model per agent, with failover and live metering.</p>
+            </div>
+            <div class="act" data-scene="integrations">
+              <span class="anum"><b>2</b> Plug in</span>
+              <h3>Wire up your stack</h3>
+              <p>GitHub, Jira, Slack, a real Chrome for QA. One click to connect — the team uses them the way your engineers would.</p>
+            </div>
+            <div class="act" data-scene="create">
+              <span class="anum"><b>3</b> Create</span>
               <h3>You file a ticket</h3>
               <p>Describe the work in a line — “Build a notes app with an API and UI.” Pick an autonomy level and dispatch. That’s the whole ask.</p>
             </div>
-            <div class="act" data-scene="1">
-              <span class="anum"><b>2</b> Build</span>
+            <div class="act" data-scene="build">
+              <span class="anum"><b>4</b> Build</span>
               <h3>The team builds — live</h3>
               <p>The PM specs it, the CTO plans it, and engineers build their slices in parallel. Every step streams into the console as it happens.</p>
             </div>
-            <div class="act" data-scene="2">
-              <span class="anum"><b>3</b> Track</span>
+            <div class="act" data-scene="dashboard">
+              <span class="anum"><b>5</b> Track</span>
               <h3>The dashboard updates itself</h3>
               <p>Missions in flight, agents on shift, spend and tokens — the command center reflects reality in real time, no refresh.</p>
             </div>
-            <div class="act" data-scene="3">
-              <span class="anum"><b>4</b> Verify</span>
+            <div class="act" data-scene="tickets">
+              <span class="anum"><b>6</b> Verify</span>
               <h3>Tickets move as work lands</h3>
-              <p>Each slice is a card. It flows To Do → In Progress → QA → Done as the team codes, reviews, and verifies — with the evidence attached.</p>
+              <p>Each slice is a card. It flows To Do → In Progress → QA → Done as the team codes, reviews, and verifies — evidence attached.</p>
             </div>
-            <div class="act" data-scene="4">
-              <span class="anum"><b>5</b> Ship</span>
-              <h3>Shipped — you’re notified</h3>
-              <p>QA passes, the merge gate clears with your sign-off, and it deploys. You get a notification: the app is live.</p>
+            <div class="act" data-scene="ship">
+              <span class="anum"><b>7</b> Ship &amp; run</span>
+              <h3>Shipped — run it in one click</h3>
+              <p>QA passes, the merge gate clears with your sign-off, it deploys — and you can boot the built app on a live URL to test it yourself.</p>
             </div>
           </div>
 
@@ -165,8 +175,27 @@
             <div class="stage-card">
               <div class="stage-chrome"><span class="tl"><span style="background:#ff5f57"></span><span style="background:#febc2e"></span><span style="background:#28c840"></span></span><span class="u" id="stageUrl">app.shipwright.dev</span></div>
               <div class="scenes" id="stageScenes">
-                <!-- scene 0: create mission -->
-                <div class="scene" data-scene="0">
+                <!-- models -->
+                <div class="scene" data-scene="models">
+                  <div class="mdl">
+                    <div class="mdl-row"><span class="mdl-ic" style="background:#7c5cff">A</span><div class="mdl-x"><b>Anthropic</b><span class="mdl-sub">claude-opus-4-8 · sonnet · haiku</span></div><span class="mdl-badge">● Connected</span></div>
+                    <div class="mdl-row"><span class="mdl-ic" style="background:#5b8cff">C</span><div class="mdl-x"><b>Claude Code CLI</b><span class="mdl-sub">runs on your Claude seat · no key</span></div><span class="mdl-badge">● Connected</span></div>
+                    <div class="mdl-row"><span class="mdl-ic" style="background:#34d3ee">O</span><div class="mdl-x"><b>Ollama <span class="mdl-tag">local</span></b><span class="mdl-sub">llama3.1 · qwen2.5-coder · free</span></div><span class="mdl-badge">● Connected</span></div>
+                  </div>
+                </div>
+                <!-- integrations -->
+                <div class="scene" data-scene="integrations">
+                  <div class="intg">
+                    <div class="intg-tile on"><svg width="18" height="18"><use href="#i-gh"/></svg><b>GitHub</b><span>Connected</span></div>
+                    <div class="intg-tile on"><svg width="18" height="18"><use href="#i-kanban"/></svg><b>Jira</b><span>Connected</span></div>
+                    <div class="intg-tile on"><svg width="18" height="18"><use href="#i-bolt"/></svg><b>Slack</b><span>Connected</span></div>
+                    <div class="intg-tile on"><svg width="18" height="18"><use href="#i-flask"/></svg><b>Chrome QA</b><span>Connected</span></div>
+                    <div class="intg-tile"><svg width="18" height="18"><use href="#i-shield"/></svg><b>Sentry</b><span>Connect</span></div>
+                    <div class="intg-tile"><svg width="18" height="18"><use href="#i-doc"/></svg><b>Linear</b><span>Connect</span></div>
+                  </div>
+                </div>
+                <!-- create mission -->
+                <div class="scene" data-scene="create">
                   <div class="mk-form">
                     <div style="font-weight:800;font-size:16px;font-family:var(--display)">New mission</div>
                     <div class="mk-field"><div class="lab">Title</div><div class="val"><span id="mkTitle"></span><span class="mk-caret"></span></div></div>
@@ -174,10 +203,10 @@
                     <button class="btn primary mk-btn" id="mkBtn"><svg width="15" height="15"><use href="#i-rocket"/></svg> Dispatch mission</button>
                   </div>
                 </div>
-                <!-- scene 1: live console -->
-                <div class="scene" data-scene="1"><div class="cons" id="cons"></div></div>
-                <!-- scene 2: dashboard live -->
-                <div class="scene" data-scene="2">
+                <!-- live console -->
+                <div class="scene" data-scene="build"><div class="cons" id="cons"></div></div>
+                <!-- dashboard live -->
+                <div class="scene" data-scene="dashboard">
                   <div class="dsh">
                     <div class="tile"><div class="k">Missions in flight</div><div class="n" data-count="4">0</div></div>
                     <div class="tile"><div class="k">Shipped</div><div class="n" data-count="12">0</div></div>
@@ -185,8 +214,8 @@
                     <div class="tile"><div class="k">Spend (est.)</div><div class="n" data-money="1286">$0</div><div class="spark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
                   </div>
                 </div>
-                <!-- scene 3: tickets moving -->
-                <div class="scene" data-scene="3">
+                <!-- tickets moving -->
+                <div class="scene" data-scene="tickets">
                   <div class="kb">
                     <div class="col"><h5><span class="dot" style="background:var(--faint)"></span>To Do</h5><div class="body" data-col="0"></div></div>
                     <div class="col"><h5><span class="dot" style="background:var(--brand)"></span>In Progress</h5><div class="body" data-col="1"></div></div>
@@ -194,12 +223,16 @@
                     <div class="col"><h5><span class="dot" style="background:var(--green)"></span>Done</h5><div class="body" data-col="3"></div></div>
                   </div>
                 </div>
-                <!-- scene 4: shipped + notification -->
-                <div class="scene" data-scene="4">
-                  <div class="done-wrap"><div>
+                <!-- shipped + run app -->
+                <div class="scene" data-scene="ship">
+                  <div class="done-wrap"><div style="width:100%">
                     <div class="done-ring"><svg width="34" height="34"><use href="#i-check"/></svg></div>
                     <div style="font-weight:800;font-size:19px;margin-top:16px;font-family:var(--display)">Mission shipped</div>
                     <div class="muted" style="margin-top:4px">Merged to main · deployed · QA green</div>
+                    <div class="runapp">
+                      <button class="btn primary" id="runBtn"><svg width="15" height="15"><use href="#i-rocket"/></svg> Run app</button>
+                      <span class="run-url" id="runUrl"><span class="run-dot"></span> localhost:4700 <b>live ✓</b></span>
+                    </div>
                   </div></div>
                   <div class="toast">
                     <div class="ic"><svg width="16" height="16"><use href="#i-check"/></svg></div>
@@ -307,21 +340,21 @@
     <div class="wrap">
       <div class="foot-grid">
         <div>
-          <a class="brand" href="#top" style="margin-bottom:12px"><span class="logo">◈</span><span class="name">Shipwright</span></a>
+          <a class="brand" href="#top" style="margin-bottom:12px"><span class="logo"><svg width="20" height="20" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M24 20 L14 32 L24 44" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 20 L50 32 L40 44" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 23 L33.7 30.3 L41 32 L33.7 33.7 L32 41 L30.3 33.7 L23 32 L30.3 30.3 Z" fill="currentColor"/></svg></span><span class="name">Shipwright</span></a>
           <p class="muted" style="max-width:34ch;font-size:14px">An autonomous AI software company. A team of AI agents takes your ticket from spec to a shipped, tested app — you hold the gates.</p>
           <a class="btn ghost" href="https://github.com/iamzainmunir/Shipwright" target="_blank" rel="noopener" style="margin-top:14px">
             <svg width="16" height="16"><use href="#i-gh"/></svg> iamzainmunir/Shipwright
           </a>
         </div>
-        <div>
+        <div class="foot-col">
           <h4>Product</h4>
-          <a href="#process">How it works</a>
+          <a href="#demo">How it works</a>
           <a href="#tour">Product tour</a>
           <a href="#features">Capabilities</a>
           <a href="#team">The team</a>
           <a href="#autonomy">Autonomy</a>
         </div>
-        <div>
+        <div class="foot-col">
           <h4>Company</h4>
           <a href="https://github.com/iamzainmunir/Shipwright" target="_blank" rel="noopener">GitHub</a>
           <a href="terms.html">Terms of Service</a>
