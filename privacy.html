@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — Shipwright</title>
+  <meta name="description" content="Privacy Policy for the Shipwright website." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <script>try{var t=localStorage.getItem("sw-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html" aria-label="Shipwright — home"><span class="logo">◈</span><span class="name">Shipwright</span></a>
+      <nav class="nav-links" style="position:static">
+        <a class="link" href="index.html">Home</a>
+        <a class="link" href="terms.html">Terms</a>
+        <a class="btn ghost" href="https://github.com/iamzainmunir/Shipwright" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="legal">
+      <div class="eyebrow">Legal</div>
+      <h1>Privacy Policy</h1>
+      <p class="faint">Last updated: <span id="updated"></span></p>
+
+      <div class="note"><strong>Template notice.</strong> This is a starting-point template for the Shipwright website, not legal advice. Adapt it to reflect what your deployment actually collects, and have a professional review it before production use.</div>
+
+      <h2>1. Overview</h2>
+      <p>This Privacy Policy explains how the Shipwright website (the “Site”) handles information. The Site is primarily an informational, static website describing an open-source project.</p>
+
+      <h2>2. Information we do not collect</h2>
+      <p>The Site, as published, does not require an account, does not include forms that collect personal data, and does not sell personal information. It does not set advertising or tracking cookies of its own.</p>
+
+      <h2>3. Information collected automatically</h2>
+      <p>If the Site is hosted by a third-party provider (for example, a static-hosting service), that provider may automatically log standard technical information such as IP address, browser type, and pages requested, for security and operational purposes. That processing is governed by the host’s own privacy policy.</p>
+
+      <h2>4. Third-party resources</h2>
+      <p>The Site loads a web font from Google Fonts and a JavaScript library from a public CDN to render its design and interactive demo. When your browser requests these resources, the respective providers may receive your IP address and request metadata under their own privacy policies. The Site also links out to GitHub; visiting those links is subject to GitHub’s privacy policy.</p>
+
+      <h2>5. Local storage</h2>
+      <p>The Site may use your browser’s local storage only for lightweight, per-device conveniences (such as remembering a display preference). This data stays in your browser and is not transmitted to us.</p>
+
+      <h2>6. Children’s privacy</h2>
+      <p>The Site is not directed to children under 13 and does not knowingly collect personal information from them.</p>
+
+      <h2>7. Your choices</h2>
+      <p>You can block cookies and local storage, or disable JavaScript, in your browser settings. The Site’s core content remains readable without JavaScript; only the animated demo requires it.</p>
+
+      <h2>8. Changes to this policy</h2>
+      <p>We may update this policy from time to time. Changes take effect when posted here, and the “Last updated” date will reflect the revision.</p>
+
+      <h2>9. Contact</h2>
+      <p>Questions about this policy can be raised via the project’s <a href="https://github.com/iamzainmunir/Shipwright" target="_blank" rel="noopener" style="color:var(--brand);font-weight:700">GitHub repository</a>.</p>
+    </article>
+  </main>
+
+  <footer class="site">
+    <div class="wrap foot-bottom" style="border:none;margin:0;padding:0">
+      <span class="faint">© <span id="year">2026</span> Shipwright. All rights reserved.</span>
+      <span class="faint"><a href="index.html" style="color:var(--brand);font-weight:700">← Back to home</a></span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("updated").textContent = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+  </script>
+</body>
+</html>

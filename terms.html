@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms of Service — Shipwright</title>
+  <meta name="description" content="Terms of Service for the Shipwright website and project." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <script>try{var t=localStorage.getItem("sw-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html" aria-label="Shipwright — home"><span class="logo">◈</span><span class="name">Shipwright</span></a>
+      <nav class="nav-links" style="position:static">
+        <a class="link" href="index.html">Home</a>
+        <a class="link" href="privacy.html">Privacy</a>
+        <a class="btn ghost" href="https://github.com/iamzainmunir/Shipwright" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article class="legal">
+      <div class="eyebrow">Legal</div>
+      <h1>Terms of Service</h1>
+      <p class="faint">Last updated: <span id="updated"></span></p>
+
+      <div class="note"><strong>Template notice.</strong> This is a starting-point template for the Shipwright website, not legal advice. Review and adapt it (and have a professional check it) before relying on it for a production service.</div>
+
+      <h2>1. Acceptance of terms</h2>
+      <p>By accessing or using the Shipwright website and any associated open-source project (the “Service”), you agree to be bound by these Terms of Service. If you do not agree, do not use the Service.</p>
+
+      <h2>2. The service</h2>
+      <p>Shipwright is a software project and an informational website describing it. The website is provided for general information. The project’s source code is made available under the license stated in its repository, and your use of that code is governed by that license in addition to these Terms.</p>
+
+      <h2>3. Acceptable use</h2>
+      <p>You agree not to:</p>
+      <ul>
+        <li>use the Service in any way that violates applicable law or regulation;</li>
+        <li>attempt to gain unauthorized access to the Service, its systems, or related infrastructure;</li>
+        <li>interfere with or disrupt the integrity or performance of the Service; or</li>
+        <li>misrepresent your affiliation with the project or its maintainers.</li>
+      </ul>
+
+      <h2>4. Intellectual property</h2>
+      <p>The Shipwright name, logo, and website content are the property of their respective owners. Source code is licensed as stated in the repository. Nothing in these Terms grants you rights to trademarks except as necessary to reference the project.</p>
+
+      <h2>5. Third-party links and services</h2>
+      <p>The Service may link to third-party websites or services (for example, GitHub). We are not responsible for the content, policies, or practices of any third party.</p>
+
+      <h2>6. Disclaimer of warranties</h2>
+      <p>The Service and the project are provided “as is” and “as available,” without warranties of any kind, express or implied, including merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the Service will be uninterrupted, secure, or error-free.</p>
+
+      <h2>7. Limitation of liability</h2>
+      <p>To the maximum extent permitted by law, in no event will the maintainers be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of data, profits, or revenue, arising from your use of the Service.</p>
+
+      <h2>8. Changes to these terms</h2>
+      <p>We may update these Terms from time to time. Changes take effect when posted on this page, and the “Last updated” date will reflect the revision.</p>
+
+      <h2>9. Contact</h2>
+      <p>Questions about these Terms can be raised via the project’s <a href="https://github.com/iamzainmunir/Shipwright" target="_blank" rel="noopener" style="color:var(--brand);font-weight:700">GitHub repository</a>.</p>
+    </article>
+  </main>
+
+  <footer class="site">
+    <div class="wrap foot-bottom" style="border:none;margin:0;padding:0">
+      <span class="faint">© <span id="year">2026</span> Shipwright. All rights reserved.</span>
+      <span class="faint"><a href="index.html" style="color:var(--brand);font-weight:700">← Back to home</a></span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("updated").textContent = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+  </script>
+</body>
+</html>

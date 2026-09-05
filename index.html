@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shipwright — Ship software with a full AI team</title>
+  <meta name="description" content="Shipwright is an autonomous AI software company. File a ticket; a team of AI agents takes it through spec, build, code review, QA, and ship — you hold the gates that matter." />
+  <meta property="og:title" content="Shipwright — an autonomous AI software company" />
+  <meta property="og:description" content="A team of AI agents takes your ticket from spec to a shipped, tested app. You hold the gates." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#7c5cff" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <script>try{var t=localStorage.getItem("sw-theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <g id="_s" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></g>
+    </defs>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M6 2h8l4 4v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM14 2v4h4"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 20l4-1L18 9l-3-3L5 16zM14 6l3 3"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M6 6h12v12H6zM9 9h6v6H9zM9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 15c-1 1-1 4-1 4s3 0 4-1M9 15l6-6a6 6 0 0 0 4-6 6 6 0 0 0-6 4l-6 6zM9 15l-3-1 2-3M9 15l1 3 3-2"/></symbol>
+    <symbol id="i-kanban" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 4h4v14H4zM10 4h4v9h-4zM16 4h4v11h-4z"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 2v6M15 2v6M6 8h12v3a6 6 0 0 1-12 0zM12 17v5"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3l1.8 4.8L18 9l-4.2 1.2L12 15l-1.8-4.8L6 9l4.2-1.2zM5 15l.8 2 2 .8-2 .8L5 21l-.8-2-2-.8 2-.8z"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M13 2L4 14h6l-1 8 9-12h-6z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12l4 4 10-10"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/></symbol>
+    <symbol id="i-gh" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.28-.01-1.04-.02-2.04-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.82 1.1.82 2.22 0 1.61-.02 2.9-.02 3.3 0 .32.22.7.83.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6M10 20a2 2 0 0 0 4 0"/></symbol>
+  </svg>
+
+  <!-- nav -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Shipwright — home">
+        <span class="logo">◈</span><span class="name">Shipwright</span>
+      </a>
+      <nav class="nav-links closed" id="navLinks">
+        <a class="link" href="#demo">How it works</a>
+        <a class="link" href="#tour">Tour</a>
+        <a class="link" href="#features">Product</a>
+        <a class="link" href="#team">Team</a>
+        <a class="btn primary" href="https://github.com/iamzainmunir/Shipwright" target="_blank" rel="noopener">
+          <svg width="16" height="16"><use href="#i-gh"/></svg> GitHub
+        </a>
+      </nav>
+      <div class="row" style="gap:8px;align-items:center">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg width="17" height="17"><use href="#i-moon"/></svg>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- hero -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="badge"><span class="dot"></span> Autonomous engineering org</span>
+          <h1>Ship software with a <span class="grad-text">full AI team</span>, at the autonomy you set.</h1>
+          <p class="sub">Hand Shipwright a ticket. Specialized agents — PM, architects, backend, frontend, QA, security, DevOps — take it through the real lifecycle and deliver a merged, tested change. Every step is inspectable and gated.</p>
+          <div class="cta">
+            <a class="btn primary lg" href="https://github.com/iamzainmunir/Shipwright" target="_blank" rel="noopener">
+              <svg width="16" height="16"><use href="#i-gh"/></svg> View on GitHub
+            </a>
+            <a class="btn ghost lg" href="#process">See how it works</a>
+          </div>
+          <div class="stats">
+            <div class="stat"><div class="n">10</div><div class="l">specialist agents</div></div>
+            <div class="stat"><div class="n">6</div><div class="l">lifecycle phases</div></div>
+            <div class="stat"><div class="n">4</div><div class="l">autonomy levels</div></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="halo"></div>
+          <canvas id="hero3d" aria-hidden="true"></canvas>
+          <span class="pill p1"><span class="d" style="background:var(--green)"></span> QA passed</span>
+          <span class="pill p2"><span class="d" style="background:var(--brand)"></span> Building · 3 agents</span>
+          <span class="pill p3"><span class="d" style="background:var(--cyan)"></span> Shipped ✓</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- pipeline strip -->
+    <section style="padding-top:8px">
+      <div class="wrap">
+        <div class="card pad">
+          <div class="pipe">
+            <div class="step"><div class="ic"><svg width="18" height="18"><use href="#i-doc"/></svg></div><div><div class="k">Phase 1</div><div class="lbl">Intake</div></div></div>
+            <div class="step"><div class="ic"><svg width="18" height="18"><use href="#i-pen"/></svg></div><div><div class="k">Phase 2</div><div class="lbl">Spec</div></div></div>
+            <div class="step"><div class="ic"><svg width="18" height="18"><use href="#i-cpu"/></svg></div><div><div class="k">Phase 3</div><div class="lbl">Build</div></div></div>
+            <div class="step"><div class="ic"><svg width="18" height="18"><use href="#i-shield"/></svg></div><div><div class="k">Phase 4</div><div class="lbl">Review</div></div></div>
+            <div class="step"><div class="ic"><svg width="18" height="18"><use href="#i-flask"/></svg></div><div><div class="k">Phase 5</div><div class="lbl">QA</div></div></div>
+            <div class="step"><div class="ic"><svg width="18" height="18"><use href="#i-rocket"/></svg></div><div><div class="k">Phase 6</div><div class="lbl">Ship</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- process reel (built by app.js) -->
+    <section id="process">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">The pipeline</div>
+          <h2>Watch a mission flow through the org</h2>
+          <p>From a one-line ticket to a shipped, tested app — this is the exact path every mission takes, on repeat.</p>
+        </div>
+        <div id="reel"></div>
+      </div>
+    </section>
+
+    <!-- scroll-driven end-to-end demo -->
+    <section id="demo">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">How it works</div>
+          <h2>See it work, end to end</h2>
+          <p>Scroll to walk through one real mission — from filing the ticket to the “shipped” notification.</p>
+        </div>
+        <div class="story-grid" style="margin-top:18px">
+          <div class="story-scenes" id="acts">
+            <div class="act" data-scene="0">
+              <span class="anum"><b>1</b> Create</span>
+              <h3>You file a ticket</h3>
+              <p>Describe the work in a line — “Build a notes app with an API and UI.” Pick an autonomy level and dispatch. That’s the whole ask.</p>
+            </div>
+            <div class="act" data-scene="1">
+              <span class="anum"><b>2</b> Build</span>
+              <h3>The team builds — live</h3>
+              <p>The PM specs it, the CTO plans it, and engineers build their slices in parallel. Every step streams into the console as it happens.</p>
+            </div>
+            <div class="act" data-scene="2">
+              <span class="anum"><b>3</b> Track</span>
+              <h3>The dashboard updates itself</h3>
+              <p>Missions in flight, agents on shift, spend and tokens — the command center reflects reality in real time, no refresh.</p>
+            </div>
+            <div class="act" data-scene="3">
+              <span class="anum"><b>4</b> Verify</span>
+              <h3>Tickets move as work lands</h3>
+              <p>Each slice is a card. It flows To Do → In Progress → QA → Done as the team codes, reviews, and verifies — with the evidence attached.</p>
+            </div>
+            <div class="act" data-scene="4">
+              <span class="anum"><b>5</b> Ship</span>
+              <h3>Shipped — you’re notified</h3>
+              <p>QA passes, the merge gate clears with your sign-off, and it deploys. You get a notification: the app is live.</p>
+            </div>
+          </div>
+
+          <div class="story-stage">
+            <div class="stage-card">
+              <div class="stage-chrome"><span class="tl"><span style="background:#ff5f57"></span><span style="background:#febc2e"></span><span style="background:#28c840"></span></span><span class="u" id="stageUrl">app.shipwright.dev</span></div>
+              <div class="scenes" id="stageScenes">
+                <!-- scene 0: create mission -->
+                <div class="scene" data-scene="0">
+                  <div class="mk-form">
+                    <div style="font-weight:800;font-size:16px;font-family:var(--display)">New mission</div>
+                    <div class="mk-field"><div class="lab">Title</div><div class="val"><span id="mkTitle"></span><span class="mk-caret"></span></div></div>
+                    <div class="mk-field"><div class="lab">Autonomy</div><div class="val">Supervised</div></div>
+                    <button class="btn primary mk-btn" id="mkBtn"><svg width="15" height="15"><use href="#i-rocket"/></svg> Dispatch mission</button>
+                  </div>
+                </div>
+                <!-- scene 1: live console -->
+                <div class="scene" data-scene="1"><div class="cons" id="cons"></div></div>
+                <!-- scene 2: dashboard live -->
+                <div class="scene" data-scene="2">
+                  <div class="dsh">
+                    <div class="tile"><div class="k">Missions in flight</div><div class="n" data-count="4">0</div></div>
+                    <div class="tile"><div class="k">Shipped</div><div class="n" data-count="12">0</div></div>
+                    <div class="tile"><div class="k">Agents on shift</div><div class="n" data-count="6">0</div></div>
+                    <div class="tile"><div class="k">Spend (est.)</div><div class="n" data-money="1286">$0</div><div class="spark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+                  </div>
+                </div>
+                <!-- scene 3: tickets moving -->
+                <div class="scene" data-scene="3">
+                  <div class="kb">
+                    <div class="col"><h5><span class="dot" style="background:var(--faint)"></span>To Do</h5><div class="body" data-col="0"></div></div>
+                    <div class="col"><h5><span class="dot" style="background:var(--brand)"></span>In Progress</h5><div class="body" data-col="1"></div></div>
+                    <div class="col"><h5><span class="dot" style="background:var(--amber)"></span>QA</h5><div class="body" data-col="2"></div></div>
+                    <div class="col"><h5><span class="dot" style="background:var(--green)"></span>Done</h5><div class="body" data-col="3"></div></div>
+                  </div>
+                </div>
+                <!-- scene 4: shipped + notification -->
+                <div class="scene" data-scene="4">
+                  <div class="done-wrap"><div>
+                    <div class="done-ring"><svg width="34" height="34"><use href="#i-check"/></svg></div>
+                    <div style="font-weight:800;font-size:19px;margin-top:16px;font-family:var(--display)">Mission shipped</div>
+                    <div class="muted" style="margin-top:4px">Merged to main · deployed · QA green</div>
+                  </div></div>
+                  <div class="toast">
+                    <div class="ic"><svg width="16" height="16"><use href="#i-check"/></svg></div>
+                    <div><div style="font-weight:700;font-size:13px">Notes app shipped ✓</div><div class="faint" style="font-size:12px">All acceptance criteria passed</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- screenshot tour (built by app.js) -->
+    <section id="tour">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">See it in action</div>
+          <h2>A guided tour of the product</h2>
+          <p>Real screens from the running app. It plays on its own — or pick a screen to jump straight to it.</p>
+        </div>
+        <div id="tourWidget"></div>
+      </div>
+    </section>
+
+    <!-- features -->
+    <section id="features">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Capabilities</div>
+          <h2>Everything a real engineering org needs</h2>
+          <p>Not a chatbot — a company. Providers, skills, memory, integrations, and guardrails, working together.</p>
+        </div>
+        <div class="grid g3 mt-6">
+          <article class="card feature"><div class="fic"><svg width="19" height="19"><use href="#i-kanban"/></svg></div><h3>Intake to shipped</h3><p>A full AI team takes a ticket through spec, plan, build, code review, QA, and ship — a decision graph, not a straight line.</p></article>
+          <article class="card feature"><div class="fic"><svg width="19" height="19"><use href="#i-cpu"/></svg></div><h3>Parallel, coherent builds</h3><p>Role-matched engineers build their slices in parallel git worktrees, then merge. Only the failing part rebuilds on rework.</p></article>
+          <article class="card feature"><div class="fic"><svg width="19" height="19"><use href="#i-flask"/></svg></div><h3>QA that runs the real app</h3><p>The harness boots the app's own server, drives headless Chromium, and checks each acceptance criterion by behaviour.</p></article>
+          <article class="card feature"><div class="fic"><svg width="19" height="19"><use href="#i-gear"/></svg></div><h3>Configurable autonomy</h3><p>Manual, assisted, supervised, or autonomous. Even autonomous can't force-push or auto-approve a risky merge.</p></article>
+          <article class="card feature"><div class="fic"><svg width="19" height="19"><use href="#i-plug"/></svg></div><h3>Any model — incl. Claude CLI</h3><p>Bind Anthropic, OpenAI-compatible, local Ollama, or your Claude Code CLI seat per agent, with failover and live metering.</p></article>
+          <article class="card feature"><div class="fic"><svg width="19" height="19"><use href="#i-rocket"/></svg></div><h3>Run the app in one click</h3><p>Boot any shipped mission on a free localhost port and open it live — real API and UI, not a snapshot.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- team -->
+    <section id="team">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">The team</div>
+          <h2>Ten specialists, one mission each</h2>
+          <p>Each agent owns a role and a model binding, collaborates through a shared ledger and memory, and reports every action.</p>
+        </div>
+        <div class="team mt-6" id="teamGrid"></div>
+      </div>
+    </section>
+
+    <!-- autonomy -->
+    <section id="autonomy">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Autonomy</div>
+          <h2>You decide how much rope</h2>
+          <p>Set a default for the workspace and override per mission. Higher levels ask for fewer confirmations — the guardrails always hold.</p>
+        </div>
+        <div class="grid g4 mt-6">
+          <article class="card feature"><div class="lbl" style="font-family:var(--display);font-weight:800;font-size:16px">Manual</div><div class="progress"><i style="width:25%"></i></div><p>The team proposes every step and waits for you.</p></article>
+          <article class="card feature"><div class="lbl" style="font-family:var(--display);font-weight:800;font-size:16px">Assisted</div><div class="progress"><i style="width:50%"></i></div><p>Drafts spec &amp; code; you approve each phase.</p></article>
+          <article class="card feature"><div class="lbl" style="font-family:var(--display);font-weight:800;font-size:16px">Supervised</div><div class="progress"><i style="width:72%"></i></div><p>Builds &amp; tests autonomously; merge &amp; deploy wait for your sign-off.</p></article>
+          <article class="card feature"><div class="lbl" style="font-family:var(--display);font-weight:800;font-size:16px">Autonomous</div><div class="progress"><i style="width:100%"></i></div><p>Ships end-to-end within the guardrails you set.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- integrations -->
+    <section style="padding-top:10px">
+      <div class="wrap">
+        <div class="card pad center">
+          <div class="eyebrow" style="color:var(--faint)">Plugs into your stack</div>
+          <div class="integrations" style="margin-top:10px">
+            <span class="chip">Jira</span><span class="chip">GitHub</span><span class="chip">Slack</span><span class="chip">Chrome</span>
+            <span class="chip">Sentry</span><span class="chip">Linear</span><span class="chip">Figma</span><span class="chip">Vercel</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section>
+      <div class="wrap">
+        <div class="card cta-card">
+          <h2 style="font-size:28px">Dispatch your first mission</h2>
+          <p class="muted" style="max-width:48ch;margin:8px auto 0">Explore the code, run it locally, and watch the team take a ticket from intake to a merged PR.</p>
+          <div class="cta" style="justify-content:center;margin-top:20px">
+            <a class="btn primary lg" href="https://github.com/iamzainmunir/Shipwright" target="_blank" rel="noopener">
+              <svg width="16" height="16"><use href="#i-gh"/></svg> View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- footer -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="brand" href="#top" style="margin-bottom:12px"><span class="logo">◈</span><span class="name">Shipwright</span></a>
+          <p class="muted" style="max-width:34ch;font-size:14px">An autonomous AI software company. A team of AI agents takes your ticket from spec to a shipped, tested app — you hold the gates.</p>
+          <a class="btn ghost" href="https://github.com/iamzainmunir/Shipwright" target="_blank" rel="noopener" style="margin-top:14px">
+            <svg width="16" height="16"><use href="#i-gh"/></svg> iamzainmunir/Shipwright
+          </a>
+        </div>
+        <div>
+          <h4>Product</h4>
+          <a href="#process">How it works</a>
+          <a href="#tour">Product tour</a>
+          <a href="#features">Capabilities</a>
+          <a href="#team">The team</a>
+          <a href="#autonomy">Autonomy</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="https://github.com/iamzainmunir/Shipwright" target="_blank" rel="noopener">GitHub</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="#top">Back to top ↑</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span class="faint">© <span id="year">2026</span> Shipwright. All rights reserved.</span>
+        <span class="faint">Built by <a href="https://github.com/iamzainmunir" target="_blank" rel="noopener" style="color:var(--brand);font-weight:700">@iamzainmunir</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
