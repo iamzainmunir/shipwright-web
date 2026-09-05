@@ -10,6 +10,12 @@
   };
   const icon = (id, size = 18) => `<svg width="${size}" height="${size}" aria-hidden="true"><use href="#${id}"/></svg>`;
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isDark = () => {
+    const t = document.documentElement.getAttribute("data-theme");
+    if (t === "dark") return true;
+    if (t === "light") return false;
+    return matchMedia("(prefers-color-scheme: dark)").matches;
+  };
 
   $("#year").textContent = new Date().getFullYear();
 
@@ -110,13 +116,19 @@
       </div>
       <div class="tour-tabs" id="tTabs"></div>`;
     const stage = $("#tStage"), tabs = $("#tTabs");
+    const shotSrc = (src) => `assets/shots/${src}${isDark() ? "-dark" : ""}.png`;
     SHOTS.forEach(([src, label], k) => {
-      const img = el("img", { src: `assets/shots/${src}.png`, alt: `${label} screen`, loading: k === 0 ? "eager" : "lazy" });
+      const img = el("img", { src: shotSrc(src), alt: `${label} screen`, loading: k === 0 ? "eager" : "lazy" });
+      img.dataset.shot = src;
       if (k === 0) img.classList.add("on");
       stage.appendChild(img);
       const tab = el("button", { class: "tour-tab" + (k === 0 ? " on" : "") }, label);
       tab.addEventListener("click", () => { i = k; render(); if (playing) start(); });
       tabs.appendChild(tab);
+    });
+    // swap every tour image to the theme-matching variant when the site theme changes
+    window.addEventListener("sw-themechange", () => {
+      [...stage.children].forEach((im) => { if (im.dataset.shot) im.src = shotSrc(im.dataset.shot); });
     });
     let i = 0, playing = !reduce, timer, hover = false;
     root.addEventListener("mouseenter", () => (hover = true));
@@ -189,17 +201,20 @@
     const read = () => { try { return localStorage.getItem("sw-theme"); } catch { return null; } };
     let mode = read(); // "dark" | "light" | null (=system)
     const sysDark = () => matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = () => (mode ? mode === "dark" : sysDark());
+    const dark = () => (mode ? mode === "dark" : sysDark());
     const paint = () => {
       if (mode) root.setAttribute("data-theme", mode); else root.removeAttribute("data-theme");
-      btn.innerHTML = `<svg width="17" height="17"><use href="#${isDark() ? "i-sun" : "i-moon"}"/></svg>`;
+      btn.innerHTML = `<svg width="17" height="17"><use href="#${dark() ? "i-sun" : "i-moon"}"/></svg>`;
+      window.dispatchEvent(new Event("sw-themechange"));  // theme-aware images re-sync
     };
     paint();
     btn.addEventListener("click", () => {
-      mode = isDark() ? "light" : "dark";
+      mode = dark() ? "light" : "dark";
       try { localStorage.setItem("sw-theme", mode); } catch { /* ignore */ }
       paint();
     });
+    // follow the OS when on system (no explicit choice)
+    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { if (!mode) paint(); });
   })();
 
   // ---- scroll-driven end-to-end demo ----
@@ -234,9 +249,34 @@
     function runScene(key, t) {
       if (key === "create") typeMission(t);
       else if (key === "build") streamConsole(t);
-      else if (key === "dashboard") countStats(t);
+      else if (key === "dashboard") { countStats(t); streamFeed(t); }
       else if (key === "tickets") moveTickets(t);
       else if (key === "ship") runShip(t);
+    }
+
+    const FEED = [
+      ["var(--green)", "shipped", "Rex · deployed M-224 — the chat widget is live"],
+      ["var(--blue)", "review", "Kai · approved the code review for the feedback board"],
+      ["var(--amber)", "qa", "Ivy · QA passed — every criterion green on M-233"],
+      ["#3ad29f", "build", "Ada · pushed the reminder scheduling API (M-231)"],
+      ["var(--cyan)", "plan", "Nova · broke the weekly digest into 5 tickets"],
+    ];
+    function streamFeed(t) {
+      const box = document.getElementById("dshFeed"); if (!box) return;
+      box.innerHTML = "";
+      const add = (k) => {
+        if (!alive(t) || k >= FEED.length) return;
+        const [c, chip, text] = FEED[k];
+        const idx = text.indexOf(" · ");
+        const lead = idx > 0 ? text.slice(0, idx) : text;
+        const rest = idx > 0 ? text.slice(idx) : "";
+        const row = document.createElement("div");
+        row.className = "dfeed show";
+        row.innerHTML = `<span class="fdot" style="background:${c}"></span><div><div class="ftext"><b>${lead}</b>${rest}</div><span class="fchip" style="color:${c};background:color-mix(in srgb, ${c} 16%, transparent)">${chip}</span></div>`;
+        box.appendChild(row);
+        setTimeout(() => add(k + 1), reduce ? 0 : 600);
+      };
+      add(0);
     }
 
     function runShip(t) {

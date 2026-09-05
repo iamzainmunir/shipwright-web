@@ -207,11 +207,17 @@
                 <div class="scene" data-scene="build"><div class="cons" id="cons"></div></div>
                 <!-- dashboard live -->
                 <div class="scene" data-scene="dashboard">
-                  <div class="dsh">
-                    <div class="tile"><div class="k">Missions in flight</div><div class="n" data-count="4">0</div></div>
-                    <div class="tile"><div class="k">Shipped</div><div class="n" data-count="12">0</div></div>
-                    <div class="tile"><div class="k">Agents on shift</div><div class="n" data-count="6">0</div></div>
-                    <div class="tile"><div class="k">Spend (est.)</div><div class="n" data-money="1286">$0</div><div class="spark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+                  <div class="dsh-wrap">
+                    <div class="dsh-stats">
+                      <div class="tile"><div class="k">In flight</div><div class="n" data-count="4">0</div></div>
+                      <div class="tile"><div class="k">Shipped</div><div class="n" data-count="12">0</div></div>
+                      <div class="tile"><div class="k">On shift</div><div class="n" data-count="6">0</div></div>
+                      <div class="tile"><div class="k">Spend (est.)</div><div class="n" data-money="1286">$0</div></div>
+                    </div>
+                    <div class="dsh-activity">
+                      <div class="dsh-act-head"><span class="dot" style="background:var(--green)"></span> Live activity <span class="dsh-live">auto-refreshing</span></div>
+                      <div class="dsh-feed" id="dshFeed"></div>
+                    </div>
                   </div>
                 </div>
                 <!-- tickets moving -->

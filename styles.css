@@ -379,3 +379,23 @@ body::before {
 .run-url.show { opacity: 1; transform: none; }
 .run-url .run-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: donepulse 1.6s ease-out infinite; }
 .run-url b { color: var(--green); }
+
+/* dashboard scene: stats row + live activity feed */
+.dsh-wrap { display: flex; flex-direction: column; gap: 12px; height: 100%; }
+.dsh-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.dsh-stats .tile { border: 1px solid var(--line); border-radius: 12px; background: var(--panel-2); padding: 12px 14px; }
+.dsh-stats .tile .k { font-size: 11px; color: var(--faint); font-weight: 700; }
+.dsh-stats .tile .n { font-family: var(--display); font-weight: 800; font-size: 22px; margin-top: 5px; }
+.dsh-activity { flex: 1; min-height: 0; border: 1px solid var(--line); border-radius: 12px; background: var(--panel-2); padding: 13px 15px; display: flex; flex-direction: column; }
+.dsh-act-head { display: flex; align-items: center; gap: 7px; font-weight: 700; font-size: 13px; }
+.dsh-live { margin-left: auto; font-size: 10.5px; color: var(--faint); font-weight: 600; }
+.dsh-feed { margin-top: 10px; display: flex; flex-direction: column; gap: 10px; overflow: hidden; }
+.dfeed { display: flex; gap: 9px; align-items: flex-start; opacity: 0; transform: translateY(6px); }
+.dfeed.show { animation: lineIn .45s ease forwards; }
+.dfeed .fdot { width: 7px; height: 7px; border-radius: 50%; margin-top: 5px; flex: 0 0 7px; }
+.dfeed .ftext { font-size: 12.5px; line-height: 1.45; }
+.dfeed .fchip { display: inline-block; margin-top: 4px; font-size: 9.5px; font-weight: 800; padding: 1px 8px; border-radius: 999px; }
+
+/* scroll polish: the active step's number badge fills with the brand gradient */
+.act .anum b { transition: background .3s ease, color .3s ease, border-color .3s ease; }
+.act.active .anum b { background: var(--grad); color: #fff; border-color: transparent; }
