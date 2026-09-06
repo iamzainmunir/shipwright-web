@@ -1,56 +1,104 @@
 <p align="center">
   <img src="logo.png" width="96" height="96" alt="Shipwright" />
 </p>
-<h1 align="center">Shipwright — marketing website</h1>
 
-The public landing site for **Shipwright**, an autonomous AI software company. Zero build step —
-plain HTML, CSS, and vanilla JavaScript, with a Three.js 3D hero and two interactive demos (an
-animated pipeline reel and an auto-playing product tour).
+<h1 align="center">Shipwright</h1>
 
-**Live:** open `index.html` in a browser, or host the folder on any static host (GitHub Pages,
-Netlify, Vercel, Cloudflare Pages…).
+<p align="center"><strong>An autonomous AI software company.</strong><br/>
+You file a ticket; a team of AI agents takes it from spec to a running application.</p>
 
-## Structure
+<p align="center">
+  <a href="https://github.com/iamzainmunir/shipwright"><strong>▶ App &amp; source code →</strong></a>
+</p>
+
+---
+
+## What is Shipwright?
+
+Shipwright turns a plain request — *"Build a notes app", "Fix this bug", "Add an endpoint"* —
+into working, running software. A full team of role-locked AI agents (PM, architect, engineers,
+QA, reviewer, DevOps) carries the work through spec, planning, parallel build, code review, QA, and
+ship, and hands you a real application on disk. **You hold the gates that matter** — the team can run
+end to end on its own, but it never force-pushes or approves a risky merge without you.
+
+Every deliverable is real, runnable code — never a mock. When the team can't produce something
+shippable, it **stops and asks** instead of shipping broken work.
+
+## How it works
+
+The run is a **decision graph**, not a straight line — each phase's verdict can send work forward,
+back to the failing step, or up to the architect for a call:
 
 ```
-index.html      Landing page (hero + 3D, pipeline, process reel, tour, features, team, autonomy, CTA)
-terms.html      Terms of Service (template — customize before production)
-privacy.html    Privacy Policy (template — customize before production)
-styles.css      Shared design system (light + dark, violet brand)
-app.js          Interactivity: 3D hero (Three.js), process reel, screenshot tour, nav
-assets/shots/   Product screenshots used in the tour
+intake → clarify → spec → plan → build → review → QA → ship
+                                  ▲        │       │
+                                  └── rework ◄─────┘   (QA/review send fixes to the failing part only)
+                                       │
+                                  CTO decision (redesign · rebuild · proceed)
 ```
 
-## Run locally
+- **Code review before QA** — the CTO reviews the code first; QA then verifies the reviewed
+  build's *behaviour* as the final gate, so what ships is exactly what QA blessed.
+- **Targeted rework** — when QA or review flags a problem, only the failing part rebuilds; the rest
+  is untouched. Every loop is bounded, so no cycle runs forever.
+- **Never ships unverified** — a deterministic gate overrides any hallucinated "looks good": QA must
+  actually pass and the build must be real.
 
-No dependencies. Open the file directly:
+## The team
+
+Each mission runs on a team of role-locked specialists — every agent does only its own job.
+
+| Role | Does | Does **not** |
+|---|---|---|
+| **PM** | scope, spec, acceptance criteria, plan | write code or design visuals |
+| **CTO** | architecture decisions + the code review | write day-to-day feature code |
+| **Backend** | server APIs, data, business logic | UI / styling |
+| **Frontend** | UI, components, client state | server APIs / data models |
+| **QA** | verify behaviour against acceptance criteria | review code style |
+| **DevOps** | merge, deploy, rollback | write product features |
+| **Designer · BA · Security** | UX, requirements, threat modelling | out-of-lane work |
+
+## Models
+
+Assign any model to any agent, and mix and match per role:
+
+- **Anthropic**, **OpenAI / Gemini / Groq / Mistral / DeepSeek** (OpenAI-compatible), **local Ollama**
+  (free), or any OpenAI-compatible endpoint.
+- **Claude Code CLI** — drive your local `claude` binary (your subscription seat) as a provider.
+
+Per-agent bindings, failover chains, budgets, rate caps, and live token/cost metering are all built in.
+
+## Autonomy — *when* you're in the loop
+
+Set per mission: **manual → assisted → supervised → autonomous**. Autonomous runs the whole pipeline
+unattended, but the merge / ship gate is always yours to authorize.
+
+## Key features
+
+- **Parallel, coherent builds** — engineers implement their slices in isolated git worktrees,
+  dependency-ordered, then merged.
+- **Real-app QA harness** — boots the app's own server, drives a headless browser, and checks each
+  acceptance criterion by behaviour, with screenshots as evidence.
+- **Built-in ticket board** — a Jira-like board that live-updates as the team works, plus an optional
+  one-way Jira mirror.
+- **Notifications** — email, WhatsApp, or Slack alerts on blockers, approvals, ships, and halts.
+- **Integrations** — GitHub (push / PR at the ship gate, with your consent), Jira, and a real browser
+  the QA agents can drive.
+
+## Repositories
+
+| Repo | Purpose |
+|---|---|
+| **[iamzainmunir/shipwright](https://github.com/iamzainmunir/shipwright)** | The product — the full application (Next.js web + FastAPI orchestrator + agent engine). |
+| **iamzainmunir/shipwright-web** *(this repo)* | The public marketing website. |
+
+## About this website
+
+This repository is the static landing site — no build step, deployable to any static host
+(GitHub Pages, Netlify, Vercel, Cloudflare Pages). To preview it locally:
 
 ```bash
-open index.html
+python3 -m http.server 4700   # then open http://localhost:4700
 ```
 
-…or serve it (so relative asset paths and CDN resources behave exactly as in production):
-
-```bash
-python3 -m http.server 4700
-# then visit http://localhost:4700
-```
-
-## External resources
-
-- **Google Fonts** (Space Grotesk) — the display typeface.
-- **Three.js** (via cdnjs) — the 3D hero. The hero degrades gracefully to a static halo if the
-  library is unavailable or the visitor prefers reduced motion.
-
-## Deploy to GitHub Pages
-
-Push to the repo, then in **Settings → Pages** choose the `master` branch (root). The site is
-static, so nothing else is required.
-
-## Notes
-
-- Fully responsive; respects `prefers-reduced-motion` (animations and 3D pause) and
-  `prefers-color-scheme` (light/dark).
-- The Terms and Privacy pages are **templates** — review and adapt them before relying on them.
-
-The product itself lives in a separate repository.
+Licensed under the [MIT License](LICENSE).
