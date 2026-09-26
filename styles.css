@@ -207,6 +207,19 @@ section { padding: 60px 0; }
 .feature h3 { font-size: 16px; margin-top: 12px; }
 .feature p { font-size: 14px; color: var(--muted); margin-top: 6px; }
 
+/* comparison (Why Shipwright) */
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.cmp { padding: 22px; }
+.cmp-b { border-color: color-mix(in srgb, var(--brand) 45%, var(--line));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--brand) 22%, transparent), var(--shadow); }
+.cmp-tag { font-family: var(--display); font-weight: 800; font-size: 15px; }
+.cmp-b .cmp-tag { color: var(--brand); }
+.cmp-list { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 11px; }
+.cmp-list li { position: relative; padding-left: 26px; font-size: 14px; color: var(--muted); line-height: 1.45; }
+.cmp-list li::before { content: "–"; position: absolute; left: 7px; top: -1px; color: var(--faint); font-weight: 800; }
+.cmp-list.good li { color: var(--text); }
+.cmp-list.good li::before { content: "✓"; color: var(--green); }
+
 /* team */
 .team { display: flex; flex-wrap: wrap; gap: 12px; }
 .member { display: flex; align-items: center; gap: 12px; min-width: 180px; flex: 1; padding: 14px; }
@@ -309,6 +322,7 @@ footer.site { border-top: 1px solid var(--line); background: var(--panel-2); pad
   .hero-grid { grid-template-columns: 1fr; }
   .hero-visual { max-width: 380px; margin: 6px auto 0; }
   .g3, .g4 { grid-template-columns: 1fr 1fr; }
+  .compare { grid-template-columns: 1fr; }
   .story-grid { grid-template-columns: 1fr; gap: 8px; }
   .story-stage { position: sticky; top: 70px; height: 46vh; order: -1; margin-bottom: 16px; }
   .act { min-height: 46vh; }
